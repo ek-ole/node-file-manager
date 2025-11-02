@@ -1,4 +1,4 @@
-import { writeFile, mkdir } from "node:fs/promises";
+import { writeFile, mkdir, rename } from "node:fs/promises";
 import { createReadStream } from "node:fs";
 
 export const createFile = async (filename) => {
@@ -21,3 +21,7 @@ export const readFile = (filepath) => {
     stream.on('error', reject);
   });
 };
+
+export const renameFile = async (oldPath, newPath) => {  
+  await rename(oldPath, newPath);  
+}

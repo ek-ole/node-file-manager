@@ -1,6 +1,11 @@
-import { handleAdd, handleMkdir, handleCat } from "../commands/files.js";
+import {
+  handleAdd,
+  handleMkdir,
+  handleCat,
+  handleRn,
+} from "../commands/files.js";
 import { handleCd, handleUp, handleLs } from "../commands/navigation.js";
-import { CD, CURRENT_DIR, EXIT, INVALID_INPUT, UP, LS, ADD, MKDIR, CAT } from "../utils/constants.js";
+import { CD, CURRENT_DIR, EXIT, INVALID_INPUT, UP, LS, ADD, MKDIR, CAT, RN } from "../utils/constants.js";
 import { cwd } from "node:process";
 
 export const setupPrompt = (onExit) => {
@@ -30,6 +35,13 @@ export const setupPrompt = (onExit) => {
     } else if (input.startsWith(CAT)) {
       const filepath = input.slice(CAT.length).trim();
       await handleCat(filepath);
+    } else if (input.startsWith(RN)) {
+      const args = input.slice(RN.length).trim().split(' ');   
+      if (args.length === 2) {
+        await handleRn(args[0], args[1]);
+      } else {
+        console.log(INVALID_INPUT);
+      }   
     } else {
       console.log(INVALID_INPUT);
     }

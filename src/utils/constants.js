@@ -12,3 +12,4 @@ export const LS = "ls";
 export const ADD = "add ";
 export const MKDIR = "mkdir ";
 export const CAT = "cat ";
+export const RN = "rn ";

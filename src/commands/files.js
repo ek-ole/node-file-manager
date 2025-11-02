@@ -2,6 +2,7 @@ import {
   createFile,
   createDirectory,
   readFile,
+  renameFile,
 } from "../utils/fileOperations.js";
 import { FAILED } from "../utils/constants.js";
 
@@ -29,3 +30,11 @@ export const handleCat = async (filepath) => {
     console.log(FAILED);
   }
 };
+
+export const handleRn = async (oldPath, newName) => {
+  try {
+    await renameFile(oldPath, newName);
+  } catch (error) {
+    console.log(FAILED);
+  }
+}
