@@ -1,21 +1,17 @@
 import { cwd } from 'node:process';
+import { CURRENT_DIR, GOODBYE, WELCOME } from "./utils/constants.js";
+import { getUsername } from "./cli/args.js";
+import { setupPrompt } from "./cli/prompt.js";
 
-const args = process.argv.slice(2);
-const usernameArg = args.find(arg => arg.startsWith('--username='));
-const username = usernameArg ? usernameArg.split('=')[1] : 'Anonym';
+const username = getUsername();
 
-console.log(`Welcome to the File Manager, ${username}!`);
-console.log(`You are currently in ${cwd()}!`);
+console.log(WELCOME(username));
+console.log(CURRENT_DIR(cwd()));
 
-process.stdin.on('data', (data) => {
-  const input = data.toString().trim()
-  if (input === '.exit') {
-    console.log(`Thank you for using File Manager, ${username}, goodbye!`);
-    process.exit(0)
-  }
-})
+const onExit = () => {
+  console.log(GOODBYE(username));
+  process.exit(0);
+}
 
-process.on('SIGINT', () => { 
-    console.log(`Thank you for using File Manager, ${username}, goodbye!`);
-    process.exit(0);
-});
+setupPrompt(username, onExit);
+process.on("SIGINT", onExit);
