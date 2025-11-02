@@ -7,3 +7,4 @@ export const OPERATION_FAILED = "Operation failed";
 
 export const EXIT = ".exit";
 export const UP = "up";
+export const CD = "cd ";

@@ -1,11 +1,11 @@
-import { handleUp } from "../commands/navigation.js";
-import { CURRENT_DIR, EXIT, INVALID_INPUT, UP } from "../utils/constants.js";
+import { handleCd, handleUp } from "../commands/navigation.js";
+import { CD, CURRENT_DIR, EXIT, INVALID_INPUT, UP } from "../utils/constants.js";
 import { cwd } from "node:process";
 
-export const setupPrompt = (username, onExit) => {
+export const setupPrompt = (onExit) => {
   process.stdout.write('>');
   
-  process.stdin.on('data', (data) => {
+  process.stdin.on('data', async (data) => {
     const input = data.toString().trim()
 
     if (input === EXIT) {
@@ -15,6 +15,9 @@ export const setupPrompt = (username, onExit) => {
     
     if (input === UP) {
       handleUp();
+    } else if (input.startsWith(CD)) {
+      const path = input.slice(CD.length).trim();
+      await handleCd(path);
     } else {
       console.log(INVALID_INPUT);
     }

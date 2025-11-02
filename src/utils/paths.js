@@ -1,5 +1,6 @@
 import { chdir, cwd } from "node:process";
-import { join } from "node:path";
+import { join, resolve } from "node:path"; 
+import { access } from "node:fs/promises";
 
 export const goUp = () => {
   const currentDir = cwd();
@@ -11,3 +12,9 @@ export const goUp = () => {
   }
   return false;
 };
+
+export const changeDir = async (path) => {
+  const targetDir = resolve(path);
+  await access(targetDir);
+  chdir(targetDir);
+}
