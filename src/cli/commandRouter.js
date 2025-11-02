@@ -6,6 +6,8 @@ import {
   handleRn,
   handleRm,
   handleCp,
+  handleMv,
+  handleHash,
 } from "../commands/files.js";
 import {
   CD,
@@ -18,6 +20,7 @@ import {
   RM,
   CP,
   MV,
+  HASH,
   INVALID_INPUT,
 } from "../utils/constants.js";
 
@@ -34,7 +37,8 @@ const commandHandlers = {
   [CP]: (args) =>
     args.length === 2 ? handleCp(args[0], args[1]) : console.log(INVALID_INPUT),
   [MV]: (args) =>
-    args.length === 2 ? handleCp(args[0], args[1]) : console.log(INVALID_INPUT),
+    args.length === 2 ? handleMv(args[0], args[1]) : console.log(INVALID_INPUT),
+  [HASH]: (args) => handleHash(args[0]),
 };
 
 export const routeCommand = (input) => {

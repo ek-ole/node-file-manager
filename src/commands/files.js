@@ -7,6 +7,7 @@ import {
   copyFile,
 } from "../utils/fileOperations.js";
 import { FAILED } from "../utils/constants.js";
+import { calculateHash } from "../utils/hash.js";
 
 export const handleAdd = async (filename) => {
   try {
@@ -57,10 +58,19 @@ export const handleCp = async (sourcePath, targetDir) => {
   }
 };
 
-const handleMv = async (sourcePath, targetDir) => {
+export const handleMv = async (sourcePath, targetDir) => {
   try {
     await copyFile(sourcePath, targetDir);
     await removeFile(sourcePath);
+  } catch (error) {
+    console.log(FAILED);
+  }
+};
+
+export const handleHash = async (filepath) => {
+  try {
+    const hash = await calculateHash(filepath);
+    console.log(hash);
   } catch (error) {
     console.log(FAILED);
   }

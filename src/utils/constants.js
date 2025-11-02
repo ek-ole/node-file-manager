@@ -16,3 +16,5 @@ export const RN = "rn ";
 export const RM = "rm ";
 export const CP = "cp ";
 export const MV = "mv ";
+
+export const HASH = "hash ";
