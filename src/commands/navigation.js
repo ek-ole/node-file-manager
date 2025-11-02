@@ -1,5 +1,5 @@
 import { FAILED } from "../utils/constants.js";
-import { getDirectoryList } from "../utils/files.js";
+import { getDirectoryList } from "../utils/directoryList.js";
 import { changeDir, goUp } from "../utils/paths.js";
 
 export const handleUp = () => {
@@ -7,7 +7,6 @@ export const handleUp = () => {
     return goUp();
   } catch (error) { 
     console.log(FAILED);
-    return false;
   }    
 };
 
@@ -17,7 +16,6 @@ export const handleCd = async (path) => {
     return true;
   } catch (error) {
     console.log(FAILED);
-    return false;
   }
 };
 

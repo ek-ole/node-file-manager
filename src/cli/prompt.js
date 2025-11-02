@@ -1,5 +1,6 @@
+import { handleAdd, handleMkdir, } from "../commands/files.js";
 import { handleCd, handleUp, handleLs } from "../commands/navigation.js";
-import { CD, CURRENT_DIR, EXIT, INVALID_INPUT, UP, LS } from "../utils/constants.js";
+import { CD, CURRENT_DIR, EXIT, INVALID_INPUT, UP, LS, ADD, MKDIR } from "../utils/constants.js";
 import { cwd } from "node:process";
 
 export const setupPrompt = (onExit) => {
@@ -20,6 +21,12 @@ export const setupPrompt = (onExit) => {
       await handleCd(path);
     } else if (input === LS) {
       await handleLs();
+    } else if (input.startsWith(ADD)) {
+      const filename = input.slice(ADD.length).trim();
+      await handleAdd(filename);
+    } else if (input.startsWith(MKDIR)) {
+      const dirname = input.slice(MKDIR.length).trim();
+      await handleMkdir(dirname);
     } else {
       console.log(INVALID_INPUT);
     }

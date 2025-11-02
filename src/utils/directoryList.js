@@ -1,7 +1,6 @@
 import { readdir } from 'node:fs/promises';
 import { stat } from 'node:fs/promises';
 import { join } from 'node:path';
-import { cwd } from "node:process";
 
 export const getDirectoryList = async () => {
   try {
