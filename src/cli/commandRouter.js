@@ -4,6 +4,7 @@ import {
   handleMkdir,
   handleCat,
   handleRn,
+  handleRm,
 } from "../commands/files.js";
 import {
   CD,
@@ -13,6 +14,7 @@ import {
   MKDIR,
   CAT,
   RN,
+  RM,
   INVALID_INPUT,
 } from "../utils/constants.js";
 
@@ -24,6 +26,7 @@ const commandHandlers = {
   [MKDIR]: (args) => handleMkdir(args[0]),
   [CAT]: (args) => handleCat(args[0]),
   [RN]: (args) => args.length === 2 ? handleRn(args[0], args[1]) : console.log(INVALID_INPUT),
+  [RM]: (args) => handleRm(args[0]),
 };
 
 export const routeCommand = (input) => {

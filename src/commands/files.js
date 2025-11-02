@@ -3,6 +3,7 @@ import {
   createDirectory,
   readFile,
   renameFile,
+  removeFile,
 } from "../utils/fileOperations.js";
 import { FAILED } from "../utils/constants.js";
 
@@ -36,5 +37,13 @@ export const handleRn = async (oldPath, newName) => {
     await renameFile(oldPath, newName);
   } catch (error) {
     console.log(FAILED);
+  }
+}
+
+export const handleRm = async (filepath) => {
+  try {
+    await removeFile(filepath);
+  } catch (error) {
+     console.log(FAILED);
   }
 }
