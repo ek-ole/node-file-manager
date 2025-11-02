@@ -1,5 +1,5 @@
-import { handleCd, handleUp } from "../commands/navigation.js";
-import { CD, CURRENT_DIR, EXIT, INVALID_INPUT, UP } from "../utils/constants.js";
+import { handleCd, handleUp, handleLs } from "../commands/navigation.js";
+import { CD, CURRENT_DIR, EXIT, INVALID_INPUT, UP, LS } from "../utils/constants.js";
 import { cwd } from "node:process";
 
 export const setupPrompt = (onExit) => {
@@ -18,6 +18,8 @@ export const setupPrompt = (onExit) => {
     } else if (input.startsWith(CD)) {
       const path = input.slice(CD.length).trim();
       await handleCd(path);
+    } else if (input === LS) {
+      await handleLs();
     } else {
       console.log(INVALID_INPUT);
     }

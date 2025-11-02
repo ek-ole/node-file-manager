@@ -6,11 +6,11 @@ export const goUp = () => {
   const currentDir = cwd();
   const parentDir = join(currentDir, "..");
 
-  if (parentDir !== currentDir) {
-    chdir(parentDir);
-    return true;
-  }
-  return false;
+   if (parentDir === currentDir) {
+     throw new Error("Cannot go above root");
+   }
+
+   chdir(parentDir);
 };
 
 export const changeDir = async (path) => {
