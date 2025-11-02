@@ -15,7 +15,13 @@ process.stdin.on('data', (data) => {
     console.log(`Thank you for using File Manager, ${username}, goodbye!`);
     process.exit(0);
   } else if (input === 'up') {
-    console.log('Going up one directory...')
+    console.log("Going up one directory...");
+    try {
+      const currentDir = cwd();
+      const parentDir = join(currentDir, '..');
+    } catch (error) { 
+      console.log("Operation failed");
+    }    
   } else {
     console.log('Invalid input')
   }
