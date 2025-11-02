@@ -11,3 +11,4 @@ export const CD = "cd ";
 export const LS = "ls";
 export const ADD = "add ";
 export const MKDIR = "mkdir ";
+export const CAT = "cat ";

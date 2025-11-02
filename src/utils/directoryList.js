@@ -26,7 +26,6 @@ export const getDirectoryList = async () => {
 
     return itemsWithStats;
   } catch (error) {
-    console.log("Error in listDirectory:", error.message);
     throw new Error(FAILED);
   }
 };

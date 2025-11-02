@@ -1,4 +1,8 @@
-import { createFile, createDirectory } from "../utils/fileOperations.js";
+import {
+  createFile,
+  createDirectory,
+  readFile,
+} from "../utils/fileOperations.js";
 import { FAILED } from "../utils/constants.js";
 
 export const handleAdd = async (filename) => {
@@ -16,3 +20,12 @@ export const handleMkdir = async (dirname) => {
     console.log(FAILED);
   }
 }
+
+export const handleCat = async (filepath) => {
+  try {
+    await readFile(filepath);
+    console.log('');
+  } catch (error) {
+    console.log(FAILED);
+  }
+};
