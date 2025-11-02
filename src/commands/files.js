@@ -56,3 +56,12 @@ export const handleCp = async (sourcePath, targetDir) => {
      console.log(FAILED);
   }
 };
+
+const handleMv = async (sourcePath, targetDir) => {
+  try {
+    await copyFile(sourcePath, targetDir);
+    await removeFile(sourcePath);
+  } catch (error) {
+    console.log(FAILED);
+  }
+}

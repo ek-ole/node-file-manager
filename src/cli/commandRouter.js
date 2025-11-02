@@ -17,6 +17,7 @@ import {
   RN,
   RM,
   CP,
+  MV,
   INVALID_INPUT,
 } from "../utils/constants.js";
 
@@ -31,6 +32,8 @@ const commandHandlers = {
     args.length === 2 ? handleRn(args[0], args[1]) : console.log(INVALID_INPUT),
   [RM]: (args) => handleRm(args[0]),
   [CP]: (args) =>
+    args.length === 2 ? handleCp(args[0], args[1]) : console.log(INVALID_INPUT),
+  [MV]: (args) =>
     args.length === 2 ? handleCp(args[0], args[1]) : console.log(INVALID_INPUT),
 };
 
