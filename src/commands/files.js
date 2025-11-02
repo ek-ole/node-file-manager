@@ -4,6 +4,7 @@ import {
   readFile,
   renameFile,
   removeFile,
+  copyFile,
 } from "../utils/fileOperations.js";
 import { FAILED } from "../utils/constants.js";
 
@@ -21,7 +22,7 @@ export const handleMkdir = async (dirname) => {
   } catch (error) {
     console.log(FAILED);
   }
-}
+};
 
 export const handleCat = async (filepath) => {
   try {
@@ -38,7 +39,7 @@ export const handleRn = async (oldPath, newName) => {
   } catch (error) {
     console.log(FAILED);
   }
-}
+};
 
 export const handleRm = async (filepath) => {
   try {
@@ -46,4 +47,12 @@ export const handleRm = async (filepath) => {
   } catch (error) {
      console.log(FAILED);
   }
-}
+};
+
+export const handleCp = async (sourcePath, targetDir) => {
+  try {
+    await copyFile(sourcePath, targetDir);
+  } catch (error) {
+     console.log(FAILED);
+  }
+};

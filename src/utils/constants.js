@@ -14,3 +14,4 @@ export const MKDIR = "mkdir ";
 export const CAT = "cat ";
 export const RN = "rn ";
 export const RM = "rm ";
+export const CP = "cp ";

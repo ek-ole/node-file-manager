@@ -1,11 +1,4 @@
-import {
-  handleAdd,
-  handleMkdir,
-  handleCat,
-  handleRn,
-} from "../commands/files.js";
-import { handleCd, handleUp, handleLs } from "../commands/navigation.js";
-import { CD, CURRENT_DIR, EXIT, INVALID_INPUT, UP, LS, ADD, MKDIR, CAT, RN } from "../utils/constants.js";
+import { CURRENT_DIR, EXIT } from "../utils/constants.js";
 import { cwd } from "node:process";
 import { routeCommand } from "./commandRouter.js";
 
